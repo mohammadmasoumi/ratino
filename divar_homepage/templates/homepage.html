@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<body>
+    <div style="display: block; text-align: center;">
+        <p style="font-size:xx-large; font-weight: 700">
+            Hello, Welcome to the ServiceProvider!
+        </p>
+        
+            <form action="/divar/home/chat/" method="post">
+                {% csrf_token %}
+                <input type="hidden" value="{{ state }}" name="state">
+                <input type="hidden" value="chat" name="chat">
+                <input type="submit" value="Send Message">
+            </form>
+            
+
+            <hr style="  border-top: 3px dashed #bbb;">
+
+            {% for phone_number in phone_numbers %}
+            <p>{{ phone_number }}</p>
+            {% empty %}
+            <form action="/divar/home/phone/" method="post">
+                {% csrf_token %}
+                {{ phone_form}}
+                <input type="submit" value="Show PhoneNumber">
+            </form>
+            {% endfor %}
+            
+            {% if error %}
+            <hr style="  border-top: 3px dashed #bbb;">
+            <div style="color: red; font-size: xx-large; font-weight: 900;">{{ phone_error }}</div>
+            {% endif %}
+    </div>
+
+</body>
+</html>

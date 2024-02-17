@@ -1,0 +1,189 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block navbar %}{% endblock %}
+{% block js %}
+<script type="text/javascript">document.body.classList.remove('justify-center');</script>
+{% endblock %}
+{% block css %}
+<link href="{% static 'css/rate.css' %}" rel="stylesheet">
+{% endblock %}
+{% block content %}
+
+<div class="lg:gap-x-8 lg:grid lg:grid-cols-12 lg:max-w-7xl lg:px-8 lg:py-32 max-w-2xl mx-auto px-4 py-16 sm:px-6 sm:py-24">
+    <div class="lg:col-span-4 lg:sticky self-start top-12"><h2
+            class="dark:text-slate-300 font-bold text-2xl text-slate-900 tracking-tight">دیدگاه دیگران</h2>
+        <p>نظرات کاربران بعد از دریافت کالا یا خدمات گرفته‌شده.</p>
+        <div class="flex items-center mt-3">
+            <div>
+                <div class="gap-1 rating rating-sm">
+                     <input type="radio" name="total-profile"
+                           class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                           readonly {% if profile.rate == 0 %} checked {% endif %} hidden="hidden">
+                    <input type="radio" name="total-profile"
+                           class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                           readonly {% if profile.rate == 1 %} checked {% endif %}>
+                    <input type="radio" name="total-profile"
+                           class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                           readonly {% if profile.rate == 2 %} checked {% endif %}>
+                    <input type="radio" name="total-profile"
+                           class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                           readonly {% if profile.rate == 3 %} checked {% endif %}>
+                    <input
+                        type="radio" name="total-profile"
+                        class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                        readonly {% if profile.rate == 4 %} checked {% endif %} >
+                    <input type="radio" name="total-profile"
+                           class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                           readonly {% if profile.rate == 5 %} checked {% endif %}
+                    ></div>
+                <p class="sr-only">نمره ۴ از ۵</p></div>
+            <p class="dark:text-slate-300 mr-2 text-slate-900 text-sm">بر اساس {{ rate_count }} نظر</p></div>
+        <div class="mt-6"><h3 class="sr-only">Review data</h3>
+            <dl class="space-y-3">
+                <div class="flex items-center text-sm">
+                    <dt class="flex flex-1 items-center"><p
+                            class="dark:text-slate-300 font-medium pt-1 text-left text-slate-900 w-3">۵<span
+                            class="sr-only">امتیاز</span></p>
+                        <div aria-hidden="true" class="flex flex-1 items-center mr-1">
+                            <svg class="flex-shrink-0 h-5 text-yellow-400 w-5" fill="currentColor" aria-hidden="true"
+                                 viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1 mr-3 relative">
+                                <div class="bg-slate-100 border border-slate-200 dark:bg-slate-700 dark:border-slate-600 h-3 rounded-full"></div>
+                                <div style="width:{{rate_percent.5.percent}}%"
+                                     class="absolute bg-yellow-400 border border-yellow-400 dark:opacity-85 inset-y-0 rounded-full"></div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="dark:text-slate-300 mr-3 tabular-nums text-left text-slate-900 text-sm w-10">%{{rate_percent.5.text}}</dd>
+                </div>
+                <div class="flex items-center text-sm">
+                    <dt class="flex flex-1 items-center"><p
+                            class="dark:text-slate-300 font-medium pt-1 text-left text-slate-900 w-3">۴<span
+                            class="sr-only"> star reviews</span></p>
+                        <div aria-hidden="true" class="flex flex-1 items-center mr-1">
+                            <svg class="flex-shrink-0 h-5 text-yellow-400 w-5" fill="currentColor" aria-hidden="true"
+                                 viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1 mr-3 relative">
+                                <div class="bg-slate-100 border border-slate-200 dark:bg-slate-700 dark:border-slate-600 h-3 rounded-full"></div>
+                                <div style="width:{{rate_percent.4.percent}}%"
+                                     class="absolute bg-yellow-400 border border-yellow-400 dark:opacity-85 inset-y-0 rounded-full"></div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="dark:text-slate-300 mr-3 tabular-nums text-left text-slate-900 text-sm w-10">%{{rate_percent.4.text}}</dd>
+                </div>
+                <div class="flex items-center text-sm">
+                    <dt class="flex flex-1 items-center"><p
+                            class="dark:text-slate-300 font-medium pt-1 text-left text-slate-900 w-3">۳<span
+                            class="sr-only"> star reviews</span></p>
+                        <div aria-hidden="true" class="flex flex-1 items-center mr-1">
+                            <svg class="flex-shrink-0 h-5 text-yellow-400 w-5" fill="currentColor" aria-hidden="true"
+                                 viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1 mr-3 relative">
+                                <div class="bg-slate-100 border border-slate-200 dark:bg-slate-700 dark:border-slate-600 h-3 rounded-full"></div>
+                                <div style="width:{{rate_percent.3.percent}}%"
+                                     class="absolute bg-yellow-400 border border-yellow-400 dark:opacity-85 inset-y-0 rounded-full"></div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="dark:text-slate-300 mr-3 tabular-nums text-left text-slate-900 text-sm w-10">%{{rate_percent.3.text}}</dd>
+                </div>
+                <div class="flex items-center text-sm">
+                    <dt class="flex flex-1 items-center"><p
+                            class="dark:text-slate-300 font-medium pt-1 text-left text-slate-900 w-3">۲<span
+                            class="sr-only"> star reviews</span></p>
+                        <div aria-hidden="true" class="flex flex-1 items-center mr-1">
+                            <svg class="flex-shrink-0 h-5 text-yellow-400 w-5" fill="currentColor" aria-hidden="true"
+                                 viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1 mr-3 relative">
+                                <div class="bg-slate-100 border border-slate-200 dark:bg-slate-700 dark:border-slate-600 h-3 rounded-full"></div>
+                                <div style="width:{{rate_percent.2.percent}}%"
+                                     class="absolute bg-yellow-400 border border-yellow-400 dark:opacity-85 inset-y-0 rounded-full"></div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="dark:text-slate-300 mr-3 tabular-nums text-left text-slate-900 text-sm w-10">%{{rate_percent.2.text}}</dd>
+                </div>
+                <div class="flex items-center text-sm">
+                    <dt class="flex flex-1 items-center"><p
+                            class="dark:text-slate-300 font-medium pt-1 text-left text-slate-900 w-3">۱<span
+                            class="sr-only"> star reviews</span></p>
+                        <div aria-hidden="true" class="flex flex-1 items-center mr-1">
+                            <svg class="flex-shrink-0 h-5 text-yellow-400 w-5" fill="currentColor" aria-hidden="true"
+                                 viewBox="0 0 20 20">
+                                <path fill-rule="evenodd"
+                                      d="M10.868 2.884c-.321-.772-1.415-.772-1.736 0l-1.83 4.401-4.753.381c-.833.067-1.171 1.107-.536 1.651l3.62 3.102-1.106 4.637c-.194.813.691 1.456 1.405 1.02L10 15.591l4.069 2.485c.713.436 1.598-.207 1.404-1.02l-1.106-4.637 3.62-3.102c.635-.544.297-1.584-.536-1.65l-4.752-.382-1.831-4.401z"
+                                      clip-rule="evenodd"/>
+                            </svg>
+                            <div class="flex-1 mr-3 relative">
+                                <div class="bg-slate-100 border border-slate-200 dark:bg-slate-700 dark:border-slate-600 h-3 rounded-full"></div>
+                                <div style="width:{{rate_percent.1.percent}}%"
+                                     class="absolute bg-yellow-400 border border-yellow-400 dark:opacity-85 inset-y-0 rounded-full"></div>
+                            </div>
+                        </div>
+                    </dt>
+                    <dd class="dark:text-slate-300 mr-3 tabular-nums text-left text-slate-900 text-sm w-10">%{{rate_percent.1.text}}</dd>
+                </div>
+            </dl>
+        </div>
+    </div>
+    <div class="lg:col-span-7 lg:col-start-6 lg:mt-0 mt-16"><h3 class="sr-only">آخرین دیدگاه‌ها</h3>
+        <div class="flow-root">
+            <div class="-my-12 dark:divide-slate-700 divide-slate-200 divide-y">
+                {% for rate in rate_list.all %}
+                <div class="py-12">
+                    <div class="flex items-center">
+                        <svg width="32" height="32" stroke="currentColor" stroke-width="2" fill="none"
+                             stroke-linecap="round" stroke-linejoin="round"
+                             class="bg-slate-200 dark:bg-slate-400 dark:text-slate-900 h-10 p-2 rounded-full text-slate-600 w-10"
+                             viewBox="0 0 24 24">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                            <circle cx="12" cy="7" r="4"/>
+                        </svg>
+                        <div class="mr-4">
+                            <div class="flex gap-1 items-center rating">
+                                <input type="radio" name="rating-{{rate.id}}"
+                                       hidden="hidden"
+                                       class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                       readonly {% if rate.rate == 0 %} checked {% endif %}>
+                                <input type="radio" name="rating-{{rate.id}}"
+                                       class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                       readonly {% if rate.rate == 1 %} checked {% endif %}>
+                                <input type="radio" name="rating-{{rate.id}}"
+                                       class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                       readonly {% if rate.rate == 2 %} checked {% endif %}>
+                                <input type="radio" name="rating-{{rate.id}}"
+                                        class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                    readonly {% if rate.rate == 3 %} checked {% endif %}>
+                                <input type="radio" name="rating-{{rate.id}}"
+                                       class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                       readonly {% if rate.rate == 4 %} checked {% endif %}>
+                                <input type="radio" name="rating-{{rate.id}}"
+                                       class="bg-yellow-400 duration-100 mask mask-star-2 pointer-events-none transition-all"
+                                       readonly {% if rate.rate == 5 %} checked {% endif %} ></div>
+                            <p class="sr-only">{{rate.rate}} از ۵</p></div>
+                    </div>
+                    <div class="dark:text-slate-300 mt-4 space-y-6 text-base text-slate-600"><p>{{rate.text}}</p></div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
